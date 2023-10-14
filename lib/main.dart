@@ -30,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 Widget _buildPopupDialog(BuildContext context) {
-  return  const AlertDialog(
+  return const AlertDialog(
     title: Text('Popup example'),
     content: Column(
       mainAxisSize: MainAxisSize.min,
@@ -56,6 +56,22 @@ class LocationPage extends StatelessWidget {
   }
 }
 
+class GridItem extends StatelessWidget {
+  final int index;
+
+  GridItem({required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: Center(
+        child: Text('Item $index'),
+      ),
+    );
+  }
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -63,7 +79,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: <Widget> [
+        children: <Widget>[
           Container(
             height: 350,
             color: Colors.blue,
@@ -74,10 +90,9 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-
           Expanded(
             child: Column(
-              children: <Widget> [
+              children: <Widget>[
                 Expanded(
                   flex: 1,
                   child: Container(
@@ -90,16 +105,18 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 Expanded(
                   flex: 3,
                   child: Container(
                     color: Colors.amber,
-                    child: const Center(
-                      child: Text(
-                        'Bigger Section',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, // Number of columns
                       ),
+                      itemBuilder: (context, index) {
+                        return GridItem(index: index);
+                      },
+                      itemCount: 6,
                     ),
                   ),
                 ),
@@ -129,7 +146,7 @@ class ProfilePage extends StatelessWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 1;
 
-  static  final List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     const LocationPage(),
     const HomePage(),
     const ProfilePage(),
