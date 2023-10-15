@@ -91,7 +91,7 @@ class HomePage extends StatelessWidget {
           Container(
             height: 350,
             width: 600,
-            color:  const Color.fromARGB(255, 192, 255, 248),
+            color: const Color.fromARGB(255, 192, 255, 248),
             child: Column(
               children: <Widget>[
                 SizedBox(
@@ -99,21 +99,58 @@ class HomePage extends StatelessWidget {
                   width: 600,
                   child: Center(
                     child: Row(
-                      children: <Widget> [
-                        const SizedBox(width: 60, ),
-                        Image.asset('Assets/Images/warningSign.png'),
-                        const Text(
-                          ' Riesgo de \n desbordamiento',
-                          style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          )
+                      children: <Widget>[
+                        const SizedBox(
+                          width: 60,
                         ),
+                        Image.asset('Assets/Images/warningSign.png'),
+                        const Text(' Riesgo de \n desbordamiento',
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            )),
                       ],
                     ),
                   ),
                 ),
+                const SizedBox(
+                  height: 20,
+                  width: 600,
+                ),
+                SizedBox(
+                  height: 230,
+                  width: 600,
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        width: 75,
+                        color: const Color.fromARGB(255, 131, 131, 131),
+                      ),
+                      Stack(
+                        children: <Widget>[
+                          Container(
+                              padding: const EdgeInsets.only(left: 85),
+                              child: Center(
+                                child: Image.asset('Assets/Images/atoyatl.png'),
+                              )),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              width: 273.529,
+                              height: 190,
+                              color: const Color.fromARGB(68, 58, 160, 255),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        width: 75,
+                        color: const Color.fromARGB(255, 131, 131, 131),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
@@ -147,15 +184,14 @@ class HomePage extends StatelessWidget {
                         child: Container(
                           margin: const EdgeInsets.all(8.0),
                           child: const Center(
-                            child: Text(
-                              'Porcentaje de \n       riesgo: \n          80%',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
-                          ),
+                              child: Text(
+                            'Porcentaje de \n       riesgo: \n          80%',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
                         ),
                       ),
                     ],
@@ -166,9 +202,10 @@ class HomePage extends StatelessWidget {
                   child: Container(
                     color: Colors.blueAccent,
                     child: GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 2, 
+                        childAspectRatio: 2,
                       ),
                       itemBuilder: (context, index) {
                         String text;
