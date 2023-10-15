@@ -58,15 +58,23 @@ class LocationPage extends StatelessWidget {
 
 class GridItem extends StatelessWidget {
   final int index;
+  final String text;
 
-  GridItem({required this.index});
+  const GridItem({super.key, required this.index, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(8),
       child: Center(
-        child: Text('Item $index'),
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontSize: 18, // Adjust the font size as needed
+            color: Colors.black, // Change the text color
+            fontWeight: FontWeight.bold, // Change the font weight
+          ),
+        ),
       ),
     );
   }
@@ -82,12 +90,31 @@ class HomePage extends StatelessWidget {
         children: <Widget>[
           Container(
             height: 350,
-            color: Colors.blue,
-            child: const Center(
-              child: Text(
-                'First Main Section',
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              ),
+            width: 600,
+            color:  const Color.fromARGB(255, 192, 255, 248),
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 100,
+                  width: 600,
+                  child: Center(
+                    child: Row(
+                      children: <Widget> [
+                        const SizedBox(width: 60, ),
+                        Image.asset('Assets/Images/warningSign.png'),
+                        const Text(
+                          ' Riesgo de \n desbordamiento',
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          )
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Expanded(
@@ -95,26 +122,73 @@ class HomePage extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   flex: 1,
-                  child: Container(
-                    color: Colors.green,
-                    child: const Center(
-                      child: Text(
-                        'Smaller Section',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        width: 273.52,
+                        color: const Color(0xFFa7fff4),
+                        child: Container(
+                          margin: const EdgeInsets.all(8.0),
+                          child: const Center(
+                            child: Text(
+                              'Tiempo estimado a \n   desbordamiento: \n          1:02:30',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      Container(
+                        width: 150,
+                        color: const Color(0xFFa7fff4),
+                        child: Container(
+                          margin: const EdgeInsets.all(8.0),
+                          child: const Center(
+                            child: Text(
+                              'Porcentaje de \n       riesgo: \n          80%',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Expanded(
                   flex: 3,
                   child: Container(
-                    color: Colors.amber,
+                    color: Colors.blueAccent,
                     child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, // Number of columns
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 2, 
                       ),
                       itemBuilder: (context, index) {
-                        return GridItem(index: index);
+                        String text;
+                        if (index == 0) {
+                          text = '    Densidad: \n 1000 kg/m^3';
+                        } else if (index == 1) {
+                          text = ' Altura: \n    8m';
+                        } else if (index == 2) {
+                          text = ' Temperatura: \n     18.72°C';
+                        } else if (index == 3) {
+                          text = ' PH: \n   5 ';
+                        } else if (index == 4) {
+                          text = ' Velocidad: \n    1km/h';
+                        } else {
+                          text = ' Volumen: \n       ¿?';
+                        }
+                        return GridItem(
+                          index: index,
+                          text: text,
+                        );
                       },
                       itemCount: 6,
                     ),
