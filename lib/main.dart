@@ -42,20 +42,6 @@ Widget _buildPopupDialog(BuildContext context) {
   );
 }
 
-class LocationPage extends StatelessWidget {
-  const LocationPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Location Page',
-        style: TextStyle(fontSize: 30),
-      ),
-    );
-  }
-}
-
 class GridItem extends StatelessWidget {
   final int index;
   final String text;
@@ -75,6 +61,47 @@ class GridItem extends StatelessWidget {
             fontWeight: FontWeight.bold, // Change the font weight
           ),
         ),
+      ),
+    );
+  }
+}
+
+class LocationPage extends StatelessWidget {
+  const LocationPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Container(
+            //color: Colors.green,
+            height: 440,
+            width: 600,
+            child: Center(
+              child: Image.asset('Assets/Images/MapaRio.png'),
+            ),
+          ),
+          Container(
+            color: Colors.cyan,
+            height: 349.5293864,
+            width: 600,
+            child: Center(
+              child: Container(
+                height: 300,
+                width: 400,
+                decoration: BoxDecoration(
+                  //color: Colors.amber,
+                  borderRadius: BorderRadius.circular(20.0),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 10.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -245,10 +272,66 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Profile Page',
-        style: TextStyle(fontSize: 30),
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Container(
+            color: Color.fromARGB(255, 192, 255, 248),
+            height: 440,
+            width: 600,
+            child: Column(
+              children: <Widget>[
+                const SizedBox(
+                  height: 100,
+                ),
+                Center(
+                  child: Container(
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Center(
+                      child: Image.asset('Assets/Images/pfp.png'),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                const Center(
+                  child: Text(
+                    'Jose Hernandez',
+                    style: TextStyle(
+                      fontSize: 25, // Adjust the font size as needed
+                      color: Colors.black, // Change the text color
+                      fontWeight: FontWeight.bold, // Change the font weight
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            color: Colors.lightBlue,
+            height: 349.5293864,
+            width: 600,
+            child: Center(
+              child: Container(
+                height: 250,
+                width: 350,
+                decoration: BoxDecoration(
+                  //color: Colors.amber,
+                  borderRadius: BorderRadius.circular(20.0),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 10.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
