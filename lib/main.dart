@@ -101,12 +101,34 @@ class LocationPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Container(
-            //color: Colors.green,
+          SizedBox(
             height: MediaQuery.of(context).size.height * 0.4388,
             width: MediaQuery.of(context).size.width,
-            child: Center(
-              child: Image.asset('Assets/Images/MapaRio.png'),
+            child: Column(
+              children: [
+                Center(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.025,
+                  ),
+                ),
+                const Center(
+                  child: Text(
+                    "Atoyatl Estadio Tlahuicole",
+                    style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Center(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                  ),
+                ),
+                Center(
+                  child: Image.asset('Assets/Images/MapaRio.png'),
+                ),
+              ],
             ),
           ),
           Container(
@@ -124,6 +146,33 @@ class LocationPage extends StatelessWidget {
                     color: Colors.black,
                     width: 10.0,
                   ),
+                ),
+                child: const Column(
+                  children: <Widget>[
+                    Text(
+                      'Rio: Rio Zahuapan                                 ',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(""),
+                    Text(
+                      'Localidad: Tlaxcala, cerca a la zona El Mirador',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(""),
+                    Text(
+                      'Atoyatls mas cercanos:                    \n - Atoyatl Bodega Aurera \n - Atoyatl Paqueteria Express',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
