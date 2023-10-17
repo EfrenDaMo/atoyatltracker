@@ -52,6 +52,7 @@ class _NotificacionDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: const Color.fromARGB(255, 192, 255, 248),
       child: ListView(
         children: <Widget>[
           ListTile(
@@ -101,7 +102,8 @@ class LocationPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          SizedBox(
+          Container(
+            color: const Color.fromARGB(255, 192, 255, 248),
             height: MediaQuery.of(context).size.height * 0.4388,
             width: MediaQuery.of(context).size.width,
             child: Column(
@@ -132,7 +134,7 @@ class LocationPage extends StatelessWidget {
             ),
           ),
           Container(
-            color: Colors.cyan,
+            color: Colors.lightBlue,
             height: MediaQuery.of(context).size.height * 0.4,
             width: MediaQuery.of(context).size.width,
             child: Center(
@@ -303,7 +305,7 @@ class HomePage extends StatelessWidget {
                 Expanded(
                   flex: 3,
                   child: Container(
-                    color: Colors.blueAccent,
+                    color: Colors.lightBlue,
                     child: GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -344,7 +346,9 @@ class HomePage extends StatelessWidget {
 }
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+
+  final TextEditingController _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -358,7 +362,7 @@ class ProfilePage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 const SizedBox(
-                  height: 100,
+                  height: 50,
                 ),
                 Center(
                   child: Container(
@@ -376,15 +380,25 @@ class ProfilePage extends StatelessWidget {
                 const SizedBox(
                   height: 50,
                 ),
-                const Center(
-                  child: Text(
-                    'Jose Hernandez',
-                    style: TextStyle(
-                      fontSize: 25, // Adjust the font size as needed
-                      color: Colors.black, // Change the text color
-                      fontWeight: FontWeight.bold, // Change the font weight
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: TextField(
+                      controller: _textController,
+                      decoration: const InputDecoration(
+                        labelText: 'Introduzca Nombre',
+                      ),
                     ),
                   ),
+                ),
+                ElevatedButton(
+                onPressed: () {
+                    String enteredText = _textController.text;
+                    // Do something with the entered text
+                    // ignore: avoid_print
+                    print('Entered text: $enteredText');
+                  },
+                  child: const Text('Insertar'),
                 ),
               ],
             ),
@@ -395,15 +409,57 @@ class ProfilePage extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             child: Center(
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.3,
-                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.35,
+                width: MediaQuery.of(context).size.width * 0.9,
                 decoration: BoxDecoration(
-                  //color: Colors.amber,
                   borderRadius: BorderRadius.circular(20.0),
                   border: Border.all(
                     color: Colors.black,
                     width: 10.0,
                   ),
+                ),
+                child: Column(
+                  children: [
+                    const Text(''),
+                    const Text(
+                      'Informacion en caso de emergencia: ',
+                      style: TextStyle(
+                        fontSize: 18, // Adjust the font size as needed
+                        color: Colors.black, // Change the text color
+                        fontWeight: FontWeight.bold, // Change the font weight
+                      ),
+                    ),
+                    Padding(
+                      padding: 
+                      const EdgeInsets.fromLTRB(30, 5, 30, 5),
+                      child: TextField(
+                        controller: _textController,
+                        decoration: const InputDecoration(
+                          labelText: 'Contacto de Emergencia 1: ',
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: 
+                      const EdgeInsets.fromLTRB(30, 5, 30, 5),
+                      child: TextField(
+                        controller: _textController,
+                        decoration: const InputDecoration(
+                          labelText: 'Contacto de Emergencia 2: ',
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: 
+                      const EdgeInsets.fromLTRB(30, 5, 30, 5),
+                      child: TextField(
+                        controller: _textController,
+                        decoration: const InputDecoration(
+                          labelText: 'Correo de Emergencia: ',
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -420,7 +476,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static final List<Widget> _widgetOptions = <Widget>[
     const LocationPage(),
     const HomePage(),
-    const ProfilePage(),
+    ProfilePage(),
   ];
 
   void _onItemTapped(int index) {
