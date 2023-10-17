@@ -31,15 +31,42 @@ class MyHomePage extends StatefulWidget {
 
 Widget _buildPopupDialog(BuildContext context) {
   return const AlertDialog(
-    title: Text('Popup example'),
+    title: Text(
+      '¡Alerta!',
+      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+    ),
     content: Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text("Hello"),
+        Text(
+          "Rio ** en riesgo de desbordamiento. \n Su zona esta en riesgo de Inundación",
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
       ],
     ),
   );
+}
+
+class _NotificacionDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          ListTile(
+            title: const Text('Notificación 1'),
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      _buildPopupDialog(context));
+            },
+          )
+        ],
+      ),
+    );
+  }
 }
 
 class GridItem extends StatelessWidget {
@@ -76,20 +103,20 @@ class LocationPage extends StatelessWidget {
         children: <Widget>[
           Container(
             //color: Colors.green,
-            height: 440,
-            width: 600,
+            height: MediaQuery.of(context).size.height * 0.4388,
+            width: MediaQuery.of(context).size.width,
             child: Center(
               child: Image.asset('Assets/Images/MapaRio.png'),
             ),
           ),
           Container(
             color: Colors.cyan,
-            height: 349.5293864,
-            width: 600,
+            height: MediaQuery.of(context).size.height * 0.4,
+            width: MediaQuery.of(context).size.width,
             child: Center(
               child: Container(
-                height: 300,
-                width: 400,
+                height: MediaQuery.of(context).size.height * 0.3,
+                width: MediaQuery.of(context).size.width * 0.8,
                 decoration: BoxDecoration(
                   //color: Colors.amber,
                   borderRadius: BorderRadius.circular(20.0),
@@ -116,14 +143,14 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
-            height: 350,
-            width: 600,
+            height: MediaQuery.of(context).size.height * 0.35,
+            width: MediaQuery.of(context).size.width,
             color: const Color.fromARGB(255, 192, 255, 248),
             child: Column(
               children: <Widget>[
                 SizedBox(
                   height: 100,
-                  width: 600,
+                  width: MediaQuery.of(context).size.width,
                   child: Center(
                     child: Row(
                       children: <Widget>[
@@ -141,13 +168,13 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                  width: 600,
+                SizedBox(
+                  height: 12.6,
+                  width: MediaQuery.of(context).size.width,
                 ),
                 SizedBox(
-                  height: 230,
-                  width: 600,
+                  height: MediaQuery.of(context).size.height * 0.23,
+                  width: MediaQuery.of(context).size.width,
                   child: Row(
                     children: <Widget>[
                       Container(
@@ -164,8 +191,8 @@ class HomePage extends StatelessWidget {
                           Align(
                             alignment: Alignment.bottomCenter,
                             child: Container(
-                              width: 273.529,
-                              height: 190,
+                              width: MediaQuery.of(context).size.width * 0.6458,
+                              height: MediaQuery.of(context).size.height * 0.2,
                               color: const Color.fromARGB(68, 58, 160, 255),
                             ),
                           ),
@@ -189,7 +216,7 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Container(
-                        width: 273.52,
+                        width: MediaQuery.of(context).size.width * 0.6,
                         color: const Color(0xFFa7fff4),
                         child: Container(
                           margin: const EdgeInsets.all(8.0),
@@ -206,7 +233,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        width: 150,
+                        width: MediaQuery.of(context).size.width * 0.4,
                         color: const Color(0xFFa7fff4),
                         child: Container(
                           margin: const EdgeInsets.all(8.0),
@@ -276,9 +303,9 @@ class ProfilePage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
-            color: Color.fromARGB(255, 192, 255, 248),
-            height: 440,
-            width: 600,
+            color: const Color.fromARGB(255, 192, 255, 248),
+            height: MediaQuery.of(context).size.height * 0.45,
+            width: MediaQuery.of(context).size.width,
             child: Column(
               children: <Widget>[
                 const SizedBox(
@@ -286,9 +313,10 @@ class ProfilePage extends StatelessWidget {
                 ),
                 Center(
                   child: Container(
-                    height: 200,
-                    width: 200,
+                    height: MediaQuery.of(context).size.height * 0.175,
+                    width: MediaQuery.of(context).size.width * 0.4,
                     decoration: BoxDecoration(
+                      //color: Colors.amber,
                       borderRadius: BorderRadius.circular(100),
                     ),
                     child: Center(
@@ -314,12 +342,12 @@ class ProfilePage extends StatelessWidget {
           ),
           Container(
             color: Colors.lightBlue,
-            height: 349.5293864,
-            width: 600,
+            height: MediaQuery.of(context).size.height * 0.3888,
+            width: MediaQuery.of(context).size.width,
             child: Center(
               child: Container(
-                height: 250,
-                width: 350,
+                height: MediaQuery.of(context).size.height * 0.3,
+                width: MediaQuery.of(context).size.width * 0.8,
                 decoration: BoxDecoration(
                   //color: Colors.amber,
                   borderRadius: BorderRadius.circular(20.0),
@@ -359,34 +387,24 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title, style: const TextStyle(fontSize: 18)),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) => _buildPopupDialog(context),
-              );
-            },
-            icon: const Icon(Icons.notifications),
-          ),
-        ],
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
+      drawer: _NotificacionDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.location_pin),
-            label: "Select Location",
+            label: "Localización",
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: "Home",
+            label: "Pagina Principal",
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: "Profile",
+            label: "Perfil",
             backgroundColor: Colors.blue,
           ),
         ],
