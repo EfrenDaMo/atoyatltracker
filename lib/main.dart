@@ -349,6 +349,9 @@ class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
   final TextEditingController _textController = TextEditingController();
+  final TextEditingController _textController1 = TextEditingController();
+  final TextEditingController _textController2 = TextEditingController();
+  final TextEditingController _textController3 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -433,7 +436,7 @@ class ProfilePage extends StatelessWidget {
                       padding: 
                       const EdgeInsets.fromLTRB(30, 5, 30, 5),
                       child: TextField(
-                        controller: _textController,
+                        controller: _textController1,
                         decoration: const InputDecoration(
                           labelText: 'Contacto de Emergencia 1: ',
                         ),
@@ -443,7 +446,7 @@ class ProfilePage extends StatelessWidget {
                       padding: 
                       const EdgeInsets.fromLTRB(30, 5, 30, 5),
                       child: TextField(
-                        controller: _textController,
+                        controller: _textController2,
                         decoration: const InputDecoration(
                           labelText: 'Contacto de Emergencia 2: ',
                         ),
@@ -453,7 +456,7 @@ class ProfilePage extends StatelessWidget {
                       padding: 
                       const EdgeInsets.fromLTRB(30, 5, 30, 5),
                       child: TextField(
-                        controller: _textController,
+                        controller: _textController3,
                         decoration: const InputDecoration(
                           labelText: 'Correo de Emergencia: ',
                         ),
